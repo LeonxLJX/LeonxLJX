@@ -1,43 +1,168 @@
-# LeonxLJX · 刘鑫
+<div align="center">
 
-**Agent 基础设施工程师** — 专注 MCP / Agent Harness / Eval 与会话可观测，TypeScript 为主，Rust 加分。
+![AgentX Banner](https://aka.doubaocdn.com/s/jSdZWq3RfF)
 
-远程 · 开源贡献者 · 自由职业
+# ⚡ AgentX
+### Nine-Module Full-Stack AI Engineering Toolkit
+
+**One repo. Nine production-ready AI modules. REST API + React frontend + one-command Docker.**
+
+![Python](https://img.shields.io/badge/Python-3.10+-blue?logo=python&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.110-009688?logo=fastapi)
+![Docker](https://img.shields.io/badge/Docker-Compose-2496ED?logo=docker&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-green)
+![Tests](https://img.shields.io/badge/Tests-passing-brightgreen)
+
+*Built for engineers who ship — not decks.*
+
+</div>
 
 ---
 
-## 正在做的事
+## 🚀 What is AgentX?
 
-给 AI coding agent 补上它们缺的那层基础设施——不是又一个「套壳 LLM」，而是让 agent 工程真正可维护、可观测、可记忆的底座：
+AgentX is a **modular full-stack AI system** that packages nine recurring high-value engineering tasks into independently deliverable, demo-ready modules. Every module ships behind the same clean **REST API + React demo UI + Docker deployment**, so you can go from "here's what I can do" to "here's it running" in under five minutes.
 
-- **长期记忆**：跨会话记住代码库的决策 / 约束 / API 事实
-- **会话可观测**：把任意 agent 日志归一成事件流，算成本、找悬空调用
-- **提示词工程**：把 prompt 当代码——版本化、类型化、可测试
-- **项目规范**：给中文主流 UI 库写能让 agent 不再「跟组件库对着干」的 DESIGN.md
+![Modules](https://aka.doubaocdn.com/s/KtsLjmYz2M)
 
-## 项目（各打一个垂直缺口，非套壳）
+> 🎯 **Built around real project work**: text classification, NLP phase detection, probability calibration, job scheduling, path optimization, computational geometry, ETL/OCR pipelines, financial modeling, and a full-stack API layer.
 
-| 项目 | 定位 | 状态 |
-|---|---|---|
-| [agent-trace](https://github.com/LeonxLJX/agent-trace) | harness 中立会话可观测：双格式解析 + 成本估算 + 悬空调用检测 + 离线 viewer | ✅ 可用 |
-| [codegraph-memory](https://github.com/LeonxLJX/codegraph-memory) | coding agent 本地代码记忆层，JSON + BM25-lite，零依赖 | ✅ 可用 |
-| [prompt-forge](https://github.com/LeonxLJX/prompt-forge) | 提示词模板引擎：类型化变量 + total compiler + 24 内置 + CLI | ✅ 可用 |
-| [design-specs-web](https://github.com/LeonxLJX/design-specs-web) | 6 个中文主流 UI 库 DESIGN.md 规范包 + compose CLI | ✅ 可用 |
-| [web-engineer-skills](https://github.com/LeonxLJX/web-engineer-skills) | 12 个前端工程 Agent 技能库（SKILL.md） | ✅ 可用 |
-| [dsh-mcp-market](https://github.com/LeonxLJX/dsh-mcp-market) | DeepSeek Harness × MCP 桥接：目录 + 安装器 | ✅ 可用 |
+---
 
-## 开源贡献
+## 🏗️ Architecture
 
-- **DeepSeek Harness**（`dsh-plugin` 生态）：MCP 集成
-- **ant-design**：[#59199](https://github.com/ant-design/ant-design/pull/59199) class 组件回归守卫（AST 扫描接入 lint 链）
-- **apache/hudi**：[#19832](https://github.com/apache/hudi/pull/19832) 持久化索引类型
-- **langchainjs**：[#11518](https://github.com/langchain-ai/langchainjs/pull/11518)
+```mermaid
+graph TB
+    subgraph Client["Frontend"]
+        UI["React Demo UI<br/>module playground"]
+    end
+    subgraph API["API Layer"]
+        GW["FastAPI Gateway<br/>auth - rate-limit - docs"]
+    end
+    subgraph Core["Nine Modules"]
+        M1["TextClassifier"]
+        M2["PhaseDetect"]
+        M3["Calibrator"]
+        M4["Scheduler"]
+        M5["PathOpt"]
+        M6["GeoEngine"]
+        M7["ETL/OCR"]
+        M8["FinModel"]
+        M9["REST API"]
+    end
+    subgraph Infra["Infra"]
+        DB[("SQLite / Postgres")]
+        DOCS["OpenAPI Docs"]
+    end
+    UI --> GW
+    GW --> Core
+    Core --> DB
+    GW --> DOCS
+    style Client fill:#e1f5ff,stroke:#0099ff
+    style API fill:#fff4e1,stroke:#ff9900
+    style Core fill:#e8ffe8,stroke:#00bb00
+    style Infra fill:#ffe1e1,stroke:#dd0000
+```
 
-## 技术栈
+---
 
-`TypeScript` · `Node.js` · `Vue 3` · `React / Next.js` · `PostgreSQL` · `Redis` · `Rust` · `MCP` · `RAG / LLM`
+## 📦 The Nine Modules
 
-## 联系
+| # | Module | What it does | Tech stack |
+|---|--------|--------------|------------|
+| 1 | **Text Classifier** | Multi-class EN/ZH text classification | TF-IDF - LogReg - SVM - scikit-learn |
+| 2 | **Phase Detector** | Sentiment + topic + entity extraction | Lexicons - TF-IDF - KMeans - regex |
+| 3 | **Calibrator** | Probability calibration (Platt / Isotonic) + reliability diagrams | scikit-learn - Brier - log-loss |
+| 4 | **Scheduler** | Job scheduling, WSPT priorities, parallel machines | Kahn sort - priority queues |
+| 5 | **Path Optimizer** | Shortest path / routing optimization | NetworkX - heuristic search |
+| 6 | **Geo Engine** | Computational geometry - spatial queries | shapely - SciPy |
+| 7 | **ETL / OCR** | Multi-source ingestion, cleaning, quality gates, OCR | pandas - SQLAlchemy - OCR |
+| 8 | **Financial Model** | Time-series forecasting, risk metrics, portfolio analytics | statsmodels - pandas - numpy |
+| 9 | **REST API** | Full OpenAPI layer - every module as an endpoint | FastAPI - Pydantic - Docker |
 
-- GitHub：[@LeonxLJX](https://github.com/LeonxLJX)
-- Email：liuzhaoxing373@gmail.com
+---
+
+## ✨ Highlights
+
+- 9 independent modules - demo one, quote one, deliver one
+- One-command Docker - `docker-compose up` and the whole stack is live
+- Tested - every module has unit tests + example inputs
+- OpenAPI docs - interactive Swagger UI out of the box
+- Modular by design - add your own module by dropping a folder
+
+---
+
+## 🖥️ Development Workflow
+
+![Workflow](https://aka.doubaocdn.com/s/Ckv8iuOm5H)
+
+---
+
+## 🏃 Quick Start
+
+```bash
+# Clone
+git clone https://github.com/LeonxLJX/AgentX.git
+cd AgentX
+
+# Run with Docker (recommended)
+docker-compose up --build
+
+# Or run locally
+pip install -r requirements.txt
+uvicorn agentx.main:app --reload
+```
+
+Then open:
+
+| What | URL |
+|------|-----|
+| Demo UI | http://localhost:8000 |
+| API Docs (Swagger) | http://localhost:8000/docs |
+| Health check | http://localhost:8000/health |
+
+---
+
+## 📁 Project Structure
+
+```
+AgentX/
+├── agentx/           # core package
+│   ├── modules/      # the 9 modules, one folder each
+│   ├── api/          # FastAPI routes + schemas
+│   └── core/         # config, logging, persistence
+├── examples/         # sample inputs + outputs
+├── tests/            # unit tests
+├── docs/             # architecture notes
+├── tools/            # scripts & utilities
+└── docker-compose.yml
+```
+
+---
+
+## Tech Stack
+
+| Layer | Tools |
+|-------|-------|
+| **Language** | Python 3.10+ |
+| **API** | FastAPI - Pydantic - Uvicorn |
+| **ML / AI** | scikit-learn - pandas - numpy - SciPy - statsmodels |
+| **Data** | SQLite - SQLAlchemy - pandas |
+| **Infra** | Docker - docker-compose |
+| **Quality** | pytest - ruff - mypy |
+
+---
+
+## About
+
+This project is a demonstration of end-to-end AI engineering: from data ingestion and model selection, through API design and testing, to containerized deployment and a working demo UI.
+
+Built by **Xin Liu (Leon)** - AI & full-stack engineer. Master's in Finance (WorldQuant). I build LLM agents, RAG systems, and data pipelines that ship.
+
+GitHub: [@LeonxLJX](https://github.com/LeonxLJX)
+
+---
+
+<div align="center">
+<sub>If this project helps you, give it a star.</sub>
+</div>
