@@ -1,4 +1,4 @@
-# 👋 Hi, I'm Stella (沈星回)
+# 👋 Hi, I'm Stella (刘欣)
 
 **AI Engineer · Building Production-Grade RAG, Agents & Data Systems**
 
